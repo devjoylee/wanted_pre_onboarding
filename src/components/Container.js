@@ -7,6 +7,7 @@ function Container({ children }) {
 
 const ContainerBlock = styled.div`
   max-width: 1060px;
+  height: 100%;
   margin: 0 auto;
 `;
 

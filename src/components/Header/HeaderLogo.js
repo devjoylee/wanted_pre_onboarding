@@ -20,10 +20,6 @@ function HeaderLogo() {
 const HeaderLogoBlock = styled.div`
   display: flex;
   align-items: center;
-  width: 100%;
-  padding: 15px 0;
-  height: 60px;
-  padding: 15px 20px;
 `;
 
 const MenuButton = styled.button`
