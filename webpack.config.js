@@ -26,11 +26,15 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(jpg|png|svg)$/i,
+        test: /\.(jpg|png)$/i,
         loader: 'url-loader',
         options: {
           outputPath: 'images',
         },
+      },
+      {
+        test: /\.svg$/i,
+        use: ['@svgr/webpack'],
       },
     ],
   },
