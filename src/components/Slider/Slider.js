@@ -12,6 +12,7 @@ function Slider() {
 
 const SliderBlock = styled.section`
   margin-top: 25px;
+  height: 300px;
 `;
 
 export default Slider;
