@@ -27,6 +27,7 @@ function ImageItem({ slide }) {
 const ImageItemBlock = styled.li`
   position: relative;
   border-radius: 5px;
+  cursor: pointer;
 
   & + li {
     margin-left: 24px;
@@ -49,6 +50,7 @@ const SlideInfo = styled.div`
   height: 146px;
   border-radius: 4px;
   background-color: #fff;
+  cursor: default;
   z-index: 11;
 `;
 

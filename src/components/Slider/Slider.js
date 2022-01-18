@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { slideData } from '../../data/slideData';
 import ArrowButton from './ArrowButton';
@@ -12,7 +12,33 @@ function Slider() {
     translate: slideWidth,
   });
 
+  const [autoPlay, setAutoPlay] = useState(true);
+
   const { activeSlide, translate } = state;
+
+  const autoPlayRef = useRef();
+
+  useEffect(() => {
+    autoPlayRef.current = nextSlide;
+  });
+
+  useEffect(() => {
+    const play = () => {
+      autoPlayRef.current();
+    };
+
+    let interval = null;
+
+    if (autoPlay) {
+      interval = setInterval(play, 3000);
+    }
+
+    return () => {
+      if (autoPlay) {
+        clearInterval(interval);
+      }
+    };
+  }, [autoPlay, activeSlide]);
 
   const prevSlide = () => {
     setState({
@@ -32,13 +58,16 @@ function Slider() {
     }
   };
 
+  const handleMouseEnter = () => setAutoPlay(false);
+  const handleMouseLeave = () => setAutoPlay(true);
+
   if (!Array.isArray(slideData) || slideData.length <= 0) {
     return null;
   }
 
   return (
     <SliderBlock>
-      <ImageList state={state} slides={slideData} slideWidth={slideWidth} />
+      <ImageList state={state} slides={slideData} slideWidth={slideWidth} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} />
       <ArrowButton direction='left' handleClick={prevSlide} />
       <ArrowButton direction='right' handleClick={nextSlide} />
     </SliderBlock>

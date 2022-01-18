@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import ImageItem from './ImageItem';
 
-function ImageList({ state, slides, slideWidth }) {
+function ImageList({ state, slides, slideWidth, handleMouseEnter, handleMouseLeave }) {
   const { translate } = state;
   const totalWidth = slideWidth * slides.length;
 
   return (
-    <ImageListBlock translate={translate} width={totalWidth}>
+    <ImageListBlock translate={translate} width={totalWidth} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       {slides.map((slide) => (
         <ImageItem slide={slide} key={slide.id} />
       ))}
