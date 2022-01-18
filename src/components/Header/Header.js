@@ -3,6 +3,7 @@ import HeaderLogo from './HeaderLogo';
 import styled from 'styled-components';
 import Container from '../Container';
 import MenuList from './MenuList';
+import HeaderButtons from './HeaderButtons';
 
 function Header() {
   return (
@@ -11,6 +12,7 @@ function Header() {
         <HeaderInner>
           <HeaderLogo />
           <MenuList />
+          <HeaderButtons />
         </HeaderInner>
       </Container>
     </HeaderBlock>

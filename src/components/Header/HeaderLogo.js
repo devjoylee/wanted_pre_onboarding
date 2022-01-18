@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import logoImage from '../../assets/logo.png';
-import menuButton from '../../assets/icon-menu.png';
+import menuButton from '../../assets/icons/icon-menu.png';
 
 function HeaderLogo() {
   return (
