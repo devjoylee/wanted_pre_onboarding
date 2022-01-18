@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { slideData } from '../../data/slideData';
 import ArrowButton from './ArrowButton';
 import ImageList from './ImageList';
 
 const slideWidth = 1060 + 24; // width + margin
 
-function Slider() {
+function Slider({ slides }) {
   const [state, setState] = useState({
     activeSlide: 1,
     translate: slideWidth,
@@ -44,16 +43,16 @@ function Slider() {
     setState({
       ...state,
       translate: translate - slideWidth,
-      activeSlide: activeSlide === 0 ? slideData.length - 1 : activeSlide - 1,
+      activeSlide: activeSlide === 0 ? slides.length - 1 : activeSlide - 1,
     });
   };
 
   const nextSlide = () => {
-    if (activeSlide < slideData.length - 1) {
+    if (activeSlide < slides.length - 1) {
       setState({
         ...state,
         translate: translate + slideWidth,
-        activeSlide: activeSlide === slideData.length - 1 ? 0 : activeSlide + 1,
+        activeSlide: activeSlide === slides.length - 1 ? 0 : activeSlide + 1,
       });
     }
   };
@@ -61,13 +60,13 @@ function Slider() {
   const handleMouseEnter = () => setAutoPlay(false);
   const handleMouseLeave = () => setAutoPlay(true);
 
-  if (!Array.isArray(slideData) || slideData.length <= 0) {
+  if (!Array.isArray(slides) || slides.length <= 0) {
     return null;
   }
 
   return (
     <SliderBlock>
-      <ImageList state={state} slides={slideData} slideWidth={slideWidth} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} />
+      <ImageList state={state} slides={slides} slideWidth={slideWidth} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} />
       <ArrowButton direction='left' handleClick={prevSlide} />
       <ArrowButton direction='right' handleClick={nextSlide} />
     </SliderBlock>

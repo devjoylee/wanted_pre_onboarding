@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { menuItems } from '../../data/menuItems';
 import MenuItem from './MenuItem';
 
-function MenuList() {
+function MenuList({ menuItems }) {
   return (
     <MenuListBlock>
       {menuItems.map((item) => (

@@ -5,13 +5,13 @@ import HeaderLogo from './HeaderLogo';
 import MenuList from './MenuList';
 import HeaderButtons from './HeaderButtons';
 
-function Header() {
+function Header({ menuItems }) {
   return (
     <HeaderBlock>
       <Container>
         <HeaderInner>
           <HeaderLogo />
-          <MenuList />
+          <MenuList menuItems={menuItems} />
           <HeaderButtons />
         </HeaderInner>
       </Container>
