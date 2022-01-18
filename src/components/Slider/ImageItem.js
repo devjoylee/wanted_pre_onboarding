@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { NextIcon } from '../../assets';
 
 function ImageItem({ slide }) {
   const { title, description, image } = slide;
@@ -13,7 +14,10 @@ function ImageItem({ slide }) {
           <SlideDescription>{description}</SlideDescription>
         </TextWrapper>
         <ButtonWrapper>
-          <LinkButton>바로가기</LinkButton>
+          <LinkButton>
+            바로가기
+            <NextIcon />
+          </LinkButton>
         </ButtonWrapper>
       </SlideInfo>
     </ImageItemBlock>
@@ -27,6 +31,7 @@ const ImageItemBlock = styled.li`
 `;
 
 const SlideImage = styled.img`
+  display: block;
   border-radius: 4px;
   z-index: 10;
 `;
@@ -36,7 +41,7 @@ const SlideInfo = styled.div`
   flex-direction: column;
   position: absolute;
   left: 25px;
-  bottom: 35px;
+  bottom: 30px;
   width: 330px;
   height: 146px;
   border-radius: 4px;
@@ -71,6 +76,13 @@ const LinkButton = styled.button`
   font-weight: 700;
   color: #36f;
   cursor: pointer;
+
+  svg {
+    width: 14px;
+    height: 14px;
+    fill: #36f;
+    padding-top: 1px;
+  }
 `;
 
 export default ImageItem;
