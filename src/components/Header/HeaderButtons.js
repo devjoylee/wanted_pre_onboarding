@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import AlertIcon from '../../assets/icons/icon-alert.svg';
-import SearchIcon from '../../assets/icons/icon-search.svg';
-import profile from '../../assets/profile.jpg';
+import { AlertIcon, SearchIcon, ProfileImage } from '../../assets';
 import NewBadge from './NewBadge';
 
 function HeaderButtons() {
@@ -16,7 +14,7 @@ function HeaderButtons() {
         <NewBadge />
       </ButtonItem>
       <ButtonItem>
-        <Profile src={profile} />
+        <Profile src={ProfileImage} />
         <NewBadge />
       </ButtonItem>
       <ButtonItem>

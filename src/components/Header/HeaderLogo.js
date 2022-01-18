@@ -1,17 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import logoImage from '../../assets/logo.png';
-import menuButton from '../../assets/icons/icon-menu.png';
+import { MenuIcon, LogoImage } from '../../assets';
 
 function HeaderLogo() {
   return (
     <HeaderLogoBlock>
       <MenuButton>
-        <MenuIcon src={menuButton} />
+        <MenuIconImg src={MenuIcon} />
       </MenuButton>
       <Link to='/'>
-        <Logo src={logoImage} />
+        <Logo src={LogoImage} />
       </Link>
     </HeaderLogoBlock>
   );
@@ -23,11 +22,12 @@ const HeaderLogoBlock = styled.div`
 `;
 
 const MenuButton = styled.button`
+  display: flex;
   margin-right: 15px;
   cursor: pointer;
 `;
 
-const MenuIcon = styled.img`
+const MenuIconImg = styled.img`
   width: 17px;
   height: 14px;
 `;
@@ -35,6 +35,7 @@ const MenuIcon = styled.img`
 const Logo = styled.img`
   width: 75px;
   height: 17px;
+  margin-top: 4px;
 `;
 
 export default HeaderLogo;

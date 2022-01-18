@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import BetaIcon from '../../assets/icons/icon-beta.svg';
-import NewIcon from '../../assets/icons/icon-new.svg';
+import { BetaIcon, NewIcon } from '../../assets';
 
 function MenuItem({ menuItem }) {
   const { menuName, icon } = menuItem;
@@ -29,13 +28,13 @@ const MenuLink = styled(Link)`
   position: relative;
   font-size: 14px;
   font-weight: 600;
-  padding: 0 15px;
+  padding: 15px;
   display: inline-block;
   color: #444;
 
   & > svg {
     position: absolute;
-    top: -1px;
+    top: 14px;
     right: -4px;
     pointer-events: none;
     font-style: normal;

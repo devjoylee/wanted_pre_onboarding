@@ -1,7 +1,7 @@
 import React from 'react';
-import HeaderLogo from './HeaderLogo';
 import styled from 'styled-components';
 import Container from '../Container';
+import HeaderLogo from './HeaderLogo';
 import MenuList from './MenuList';
 import HeaderButtons from './HeaderButtons';
 

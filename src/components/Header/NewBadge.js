@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import NewBgIcon from '../../assets/icons/icon-new-bg.svg';
+import { NewBgIcon } from '../../assets';
 
 function NewBadge() {
   return (
