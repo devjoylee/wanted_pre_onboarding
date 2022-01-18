@@ -1,10 +1,11 @@
 import React from 'react';
-import { Header } from '../components';
+import { Header, Slider } from '../components';
 
 function MainPage() {
   return (
     <>
       <Header />
+      <Slider />
     </>
   );
 }
