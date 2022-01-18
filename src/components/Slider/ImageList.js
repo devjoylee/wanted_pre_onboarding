@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { slideData } from '../../data/slideData';
 import ImageItem from './ImageItem';
 
-function ImageList() {
+function ImageList({ state, slides, slideWidth }) {
+  const { translate } = state;
+  const totalWidth = slideWidth * slides.length;
+
   return (
-    <ImageListBlock>
-      {slideData.map((slide) => (
+    <ImageListBlock translate={translate} width={totalWidth}>
+      {slides.map((slide) => (
         <ImageItem slide={slide} key={slide.id} />
       ))}
     </ImageListBlock>
@@ -15,9 +17,12 @@ function ImageList() {
 
 const ImageListBlock = styled.ul`
   display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100%;
+  width: ${({ width }) => width}px;
+  transform: translateX(-${({ translate }) => translate}px);
+  transition: transform ease-out 0.4s;
+  position: absolute;
+  left: calc((100% - 1060px) / 2);
 `;
 
 export default ImageList;

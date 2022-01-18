@@ -26,8 +26,11 @@ function ImageItem({ slide }) {
 
 const ImageItemBlock = styled.li`
   position: relative;
-  margin: 0 12px;
   border-radius: 5px;
+
+  & + li {
+    margin-left: 24px;
+  }
 `;
 
 const SlideImage = styled.img`

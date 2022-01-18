@@ -2,8 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { PrevIcon, NextIcon } from '../../assets';
 
-function ArrowButton({ direction }) {
-  return <ArrowButtonBlock direction={direction}>{direction === 'left' ? <PrevIcon /> : <NextIcon />}</ArrowButtonBlock>;
+function ArrowButton({ direction, handleClick }) {
+  return (
+    <ArrowButtonBlock direction={direction} onClick={handleClick}>
+      {direction === 'left' ? <PrevIcon /> : <NextIcon />}
+    </ArrowButtonBlock>
+  );
 }
 
 const ArrowButtonBlock = styled.div`
