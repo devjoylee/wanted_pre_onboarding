@@ -5,10 +5,10 @@ import { BetaIcon, NewIcon } from '../../assets';
 import { device } from '../../data/device';
 
 function MenuItem({ menuItem }) {
-  const { menuName, icon } = menuItem;
+  const { menuName, icon, isVisibleOnMobile } = menuItem;
 
   return (
-    <MenuItemBlock>
+    <MenuItemBlock isVisible={isVisibleOnMobile}>
       <MenuLink to='/'>
         {menuName}
         {icon && (icon === 'beta' ? <BetaIcon /> : <NewIcon />)}
@@ -25,9 +25,10 @@ const MenuItemBlock = styled.li`
   }
 
   @media ${device.mobile} {
+    display: ${({ isVisible }) => (isVisible ? 'block' : 'none')};
+
     &:first-child {
       display: block;
-
       a {
         padding-left: 0;
       }
