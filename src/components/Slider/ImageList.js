@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import ImageItem from './ImageItem';
 
 function ImageList({ state, slides, slideWidth, handleMouseEnter, handleMouseLeave }) {
-  const { translate } = state;
+  const { activeSlide, translate } = state;
   const totalWidth = slideWidth * slides.length;
 
   return (
     <ImageListBlock translate={translate} width={totalWidth} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       {slides.map((slide) => (
-        <ImageItem slide={slide} key={slide.id} />
+        <ImageItem slide={slide} key={slide.id} activeSlide={activeSlide} />
       ))}
     </ImageListBlock>
   );

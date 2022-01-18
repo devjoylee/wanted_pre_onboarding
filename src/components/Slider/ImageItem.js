@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { NextIcon } from '../../assets';
 
-function ImageItem({ slide }) {
-  const { title, description, image } = slide;
+function ImageItem({ slide, activeSlide }) {
+  const { id, title, description, image } = slide;
 
   return (
-    <ImageItemBlock>
+    <ImageItemBlock active={id === activeSlide}>
       <SlideImage src={image} alt={title} />
-      <SlideInfo>
+      <SlideInfo active={id === activeSlide}>
         <TextWrapper>
           <SlideTitle>{title}</SlideTitle>
           <SlideDescription>{description}</SlideDescription>
@@ -27,6 +27,7 @@ function ImageItem({ slide }) {
 const ImageItemBlock = styled.li`
   position: relative;
   border-radius: 5px;
+  filter: brightness(${({ active }) => (active ? 100 : 50)}%);
   cursor: pointer;
 
   & + li {
@@ -52,6 +53,8 @@ const SlideInfo = styled.div`
   background-color: #fff;
   cursor: default;
   z-index: 11;
+  opacity: ${({ active }) => (active ? 1 : 0)};
+  transition: opacity ease-in 0.2s;
 `;
 
 const TextWrapper = styled.div`
