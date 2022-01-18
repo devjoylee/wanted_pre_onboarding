@@ -1,6 +1,7 @@
 // icons
 export { default as AlertIcon } from './icons/icon-alert.svg';
 export { default as BetaIcon } from './icons/icon-beta.svg';
+export { default as DotsIcon } from './icons/icon-dots.svg';
 export { default as NewIcon } from './icons/icon-new.svg';
 export { default as NewBgIcon } from './icons/icon-new-bg.svg';
 export { default as MenuIcon } from './icons/icon-menu.png';

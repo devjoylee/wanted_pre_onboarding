@@ -4,6 +4,7 @@ import Container from '../Container';
 import HeaderLogo from './HeaderLogo';
 import MenuList from './MenuList';
 import HeaderButtons from './HeaderButtons';
+import { device } from '../../data/device';
 
 function Header({ menuItems }) {
   return (
@@ -24,6 +25,10 @@ const HeaderBlock = styled.header`
   height: 50px;
   background-color: #fff;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
+
+  @media ${device.tabletS} {
+    height: 110px;
+  }
 `;
 
 const HeaderInner = styled.div`
@@ -31,6 +36,7 @@ const HeaderInner = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 `;
 
 export default Header;

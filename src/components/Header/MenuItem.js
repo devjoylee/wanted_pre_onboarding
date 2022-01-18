@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { BetaIcon, NewIcon } from '../../assets';
+import { device } from '../../data/device';
 
 function MenuItem({ menuItem }) {
   const { menuName, icon } = menuItem;
@@ -22,6 +23,16 @@ const MenuItemBlock = styled.li`
   &:first-child {
     display: none;
   }
+
+  @media ${device.mobile} {
+    &:first-child {
+      display: block;
+
+      a {
+        padding-left: 0;
+      }
+    }
+  }
 `;
 
 const MenuLink = styled(Link)`
@@ -38,6 +49,15 @@ const MenuLink = styled(Link)`
     right: -4px;
     pointer-events: none;
     font-style: normal;
+  }
+
+  @media (max-width: 1100px) {
+    font-size: 13px;
+    padding: 15px 10px;
+  }
+
+  @media ${device.mobile} {
+    font-size: 14px;
   }
 `;
 

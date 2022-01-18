@@ -1,17 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import { AlertIcon, SearchIcon, ProfileImage } from '../../assets';
+import { AlertIcon, DotsIcon, SearchIcon, ProfileImage } from '../../assets';
 import NewBadge from './NewBadge';
+import { device } from '../../data/device';
 
 function HeaderButtons() {
   return (
     <ButtonList>
-      <ButtonItem>
+      <ButtonItem className='visible-m'>
         <SearchIcon />
       </ButtonItem>
-      <ButtonItem>
+      <ButtonItem className='visible-m'>
         <AlertIcon />
         <NewBadge />
+      </ButtonItem>
+      <ButtonItem className='visible-m'>
+        <DotsIcon />
       </ButtonItem>
       <ButtonItem>
         <Profile src={ProfileImage} />
@@ -49,6 +53,18 @@ const ButtonItem = styled.li`
 
   & > *:first-child {
     cursor: pointer;
+  }
+
+  &.visible-m:nth-child(3) {
+    @media (min-width: 992px) {
+      display: none;
+    }
+  }
+
+  &:not(.visible-m) {
+    @media ${device.tabletS} {
+      display: none;
+    }
   }
 `;
 
