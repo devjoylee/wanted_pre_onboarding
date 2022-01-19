@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NextIcon } from '../../assets';
+import { device } from '../../data/device';
 
 function ImageItem({ slide, activeSlide }) {
   const { id, title, description, image } = slide;
 
   return (
-    <ImageItemBlock active={id === activeSlide}>
-      <SlideImage src={image} alt={title} />
+    <ImageItemBlock>
+      <SlideImage imageUrl={image} active={id === activeSlide} />
       <SlideInfo active={id === activeSlide}>
         <TextWrapper>
           <SlideTitle>{title}</SlideTitle>
@@ -27,16 +28,19 @@ function ImageItem({ slide, activeSlide }) {
 const ImageItemBlock = styled.li`
   position: relative;
   border-radius: 5px;
-  filter: brightness(${({ active }) => (active ? 100 : 50)}%);
+  width: 100%;
   cursor: pointer;
-
-  & + li {
-    margin-left: 24px;
-  }
+  margin: 0 10px;
 `;
 
-const SlideImage = styled.img`
-  display: block;
+const SlideImage = styled.div`
+  width: 100%;
+  height: 100%;
+  filter: brightness(${({ active }) => (active ? 100 : 50)}%);
+  background-image: url(${({ imageUrl }) => imageUrl});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   border-radius: 4px;
   z-index: 10;
 `;
@@ -55,20 +59,41 @@ const SlideInfo = styled.div`
   z-index: 11;
   opacity: ${({ active }) => (active ? 1 : 0)};
   transition: opacity ease-in 0.2s;
+
+  @media ${device.laptop} {
+    width: 100%;
+    height: auto;
+    left: 0;
+    bottom: 0;
+    border-radius: 0;
+    text-align: center;
+    justify-content: center;
+    opacity: 1;
+  }
 `;
 
 const TextWrapper = styled.div`
   padding: 20px;
+  @media ${device.laptop} {
+    font-size: 18px;
+    padding-bottom: 5px;
+  }
 `;
 
 const SlideTitle = styled.h3`
   font-size: 20px;
   margin-bottom: 2px;
+  @media ${device.laptop} {
+    font-size: 18px;
+  }
 `;
 
 const SlideDescription = styled.p`
   font-size: 14px;
   color: #333;
+  @media ${device.laptop} {
+    font-size: 13px;
+  }
 `;
 
 const ButtonWrapper = styled.div`
@@ -77,6 +102,13 @@ const ButtonWrapper = styled.div`
   flex: 1;
   padding-left: 20px;
   border-top: 1px solid #e1e2e3;
+
+  @media ${device.laptop} {
+    border: none;
+    padding-left: 0;
+    padding-bottom: 20px;
+    justify-content: center;
+  }
 `;
 
 const LinkButton = styled.button`

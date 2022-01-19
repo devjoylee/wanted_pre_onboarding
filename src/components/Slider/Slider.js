@@ -3,17 +3,16 @@ import styled from 'styled-components';
 import ArrowButton from './ArrowButton';
 import ImageList from './ImageList';
 
-const slideWidth = 1060 + 24; // width + margin
+const width = 1060;
 
 function Slider({ slides }) {
-  const [state, setState] = useState({
+  const [autoPlay, setAutoPlay] = useState(true);
+  const [current, setCurrent] = useState({
     activeSlide: 1,
-    translate: slideWidth,
+    translate: width,
   });
 
-  const [autoPlay, setAutoPlay] = useState(true);
-
-  const { activeSlide, translate } = state;
+  const { activeSlide, translate } = current;
 
   const autoPlayRef = useRef();
 
@@ -40,18 +39,18 @@ function Slider({ slides }) {
   }, [autoPlay, activeSlide]);
 
   const prevSlide = () => {
-    setState({
-      ...state,
-      translate: translate - slideWidth,
+    setCurrent({
+      ...current,
+      translate: translate - width,
       activeSlide: activeSlide === 0 ? slides.length - 1 : activeSlide - 1,
     });
   };
 
   const nextSlide = () => {
     if (activeSlide < slides.length - 1) {
-      setState({
-        ...state,
-        translate: translate + slideWidth,
+      setCurrent({
+        ...current,
+        translate: translate + width,
         activeSlide: activeSlide === slides.length - 1 ? 0 : activeSlide + 1,
       });
     }
@@ -60,13 +59,11 @@ function Slider({ slides }) {
   const handleMouseEnter = () => setAutoPlay(false);
   const handleMouseLeave = () => setAutoPlay(true);
 
-  if (!Array.isArray(slides) || slides.length <= 0) {
-    return null;
-  }
+  if (!Array.isArray(slides) || slides.length <= 0) return null;
 
   return (
     <SliderBlock>
-      <ImageList state={state} slides={slides} slideWidth={slideWidth} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} />
+      <ImageList current={current} slides={slides} width={width} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} />
       <ArrowButton direction='left' handleClick={prevSlide} />
       <ArrowButton direction='right' handleClick={nextSlide} />
     </SliderBlock>
@@ -77,6 +74,7 @@ const SliderBlock = styled.section`
   position: relative;
   margin-top: 25px;
   height: 300px;
+  overflow-x: hidden;
 `;
 
 export default Slider;
