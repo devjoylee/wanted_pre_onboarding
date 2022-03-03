@@ -4,7 +4,7 @@ import Container from '../Container';
 import HeaderLogo from './HeaderLogo';
 import MenuList from './MenuList';
 import HeaderButtons from './HeaderButtons';
-import { device } from '../../data/device';
+import { DEVICE } from '../../data/device';
 
 function Header({ menuItems }) {
   return (
@@ -26,7 +26,7 @@ const HeaderBlock = styled.header`
   background-color: #fff;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
 
-  @media ${device.tabletS} {
+  @media ${DEVICE.MEDIUM} {
     height: 110px;
   }
 `;

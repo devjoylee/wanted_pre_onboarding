@@ -8,19 +8,36 @@ const GlobalStyles = createGlobalStyle`
   }
   body {
     font-family: "Helvetica", "Arial", sans-serif;
-    line-height: 1.5;
   }
-  ul {
+  ul, li {
     list-style: none;
   }
   a {
     text-decoration: none;
+    outline: none;
     color: inherit;
+  }
+  a:hover, a:active {
+    text-decoration: none;
   }
   button {
     background-color: transparent;
     line-height: inherit;
     border: none;
+  }
+  input,
+  label,
+  select,
+  button,
+  textarea
+  {
+    margin:0;
+    border:0;
+    padding:0;
+    display:inline-block;
+    background:none;
+    line-height:1;
+    font-family:Arial;
   }
 `;
 

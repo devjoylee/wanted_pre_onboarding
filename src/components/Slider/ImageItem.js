@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NextIcon } from '../../assets';
-import { device } from '../../data/device';
+import { DEVICE } from '../../data/device';
 
 function ImageItem({ slide, activeSlide }) {
   const { id, title, description, image } = slide;
@@ -60,7 +60,7 @@ const SlideInfo = styled.div`
   opacity: ${({ active }) => (active ? 1 : 0)};
   transition: opacity ease-in 0.2s;
 
-  @media ${device.laptop} {
+  @media ${DEVICE.LARGE} {
     width: 100%;
     height: auto;
     left: 0;
@@ -74,7 +74,7 @@ const SlideInfo = styled.div`
 
 const TextWrapper = styled.div`
   padding: 20px;
-  @media ${device.laptop} {
+  @media ${DEVICE.LARGE} {
     font-size: 18px;
     padding-bottom: 5px;
   }
@@ -83,7 +83,7 @@ const TextWrapper = styled.div`
 const SlideTitle = styled.h3`
   font-size: 20px;
   margin-bottom: 2px;
-  @media ${device.laptop} {
+  @media ${DEVICE.LARGE} {
     font-size: 18px;
   }
 `;
@@ -91,7 +91,7 @@ const SlideTitle = styled.h3`
 const SlideDescription = styled.p`
   font-size: 14px;
   color: #333;
-  @media ${device.laptop} {
+  @media ${DEVICE.LARGE} {
     font-size: 13px;
   }
 `;
@@ -103,7 +103,7 @@ const ButtonWrapper = styled.div`
   padding-left: 20px;
   border-top: 1px solid #e1e2e3;
 
-  @media ${device.laptop} {
+  @media ${DEVICE.LARGE} {
     border: none;
     padding-left: 0;
     padding-bottom: 20px;

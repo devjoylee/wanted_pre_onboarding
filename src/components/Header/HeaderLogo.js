@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { MenuIcon, LogoImage } from '../../assets';
-import { device } from '../../data/device';
+import { DEVICE } from '../../data/device';
 
 function HeaderLogo() {
   return (
@@ -21,7 +21,7 @@ const HeaderLogoBlock = styled.div`
   display: flex;
   align-items: center;
 
-  @media ${device.tabletS} {
+  @media ${DEVICE.MEDIUM} {
     flex-basis: 100%;
     padding-top: 15px;
   }

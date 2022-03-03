@@ -6,7 +6,13 @@ function ImageList({ current, slides, width, handleMouseEnter, handleMouseLeave 
   const { activeSlide, translate } = current;
 
   return (
-    <ImageListBlock translate={translate} totalWidth={width * slides.length} width={width} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <ImageListBlock
+      translate={translate}
+      totalWidth={width * slides.length}
+      width={width}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       {slides.map((slide) => (
         <ImageItem slide={slide} key={slide.id} width={width} activeSlide={activeSlide} />
       ))}

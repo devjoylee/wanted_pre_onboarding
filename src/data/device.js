@@ -1,13 +1,11 @@
-const size = {
-  mobile: '767px',
-  tabletS: '991px',
-  tabletL: '1023px',
-  laptop: '1200px',
+const SIZE = {
+  SMALL: '767px',
+  MEDIUM: '991px',
+  LARGE: '1200px',
 };
 
-export const device = {
-  mobile: `(max-width: ${size.mobile})`,
-  tabletS: `(max-width: ${size.tabletS})`,
-  tabletL: `(max-width: ${size.tabletL})`,
-  laptop: `(max-width: ${size.laptop})`,
+export const DEVICE = {
+  SMALL: `(max-width: ${SIZE.SMALL})`,
+  MEDIUM: `(max-width: ${SIZE.MEDIUM})`,
+  LARGE: `(max-width: ${SIZE.LARGE})`,
 };

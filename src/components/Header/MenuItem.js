@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { BetaIcon, NewIcon } from '../../assets';
-import { device } from '../../data/device';
+import { DEVICE } from '../../data/device';
 
 function MenuItem({ menuItem }) {
   const { menuName, icon, isVisibleOnMobile } = menuItem;
@@ -24,7 +24,7 @@ const MenuItemBlock = styled.li`
     display: none;
   }
 
-  @media ${device.mobile} {
+  @media ${DEVICE.SMALL} {
     display: ${({ isVisible }) => (isVisible ? 'block' : 'none')};
 
     &:first-child {
@@ -57,7 +57,7 @@ const MenuLink = styled(Link)`
     padding: 15px 10px;
   }
 
-  @media ${device.mobile} {
+  @media ${DEVICE.SMALL} {
     font-size: 14px;
   }
 `;

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { AlertIcon, DotsIcon, SearchIcon, ProfileImage } from '../../assets';
 import NewBadge from './NewBadge';
-import { device } from '../../data/device';
+import { DEVICE } from '../../data/device';
 
 function HeaderButtons() {
   return (
@@ -62,7 +62,7 @@ const ButtonItem = styled.li`
   }
 
   &:not(.visible-m) {
-    @media ${device.tabletS} {
+    @media ${DEVICE.MEDIUM} {
       display: none;
     }
   }

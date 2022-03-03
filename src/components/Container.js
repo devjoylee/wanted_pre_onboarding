@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { device } from '../data/device';
+import { DEVICE } from '../data/device';
 
 function Container({ children }) {
   return <ContainerBlock>{children}</ContainerBlock>;
@@ -11,11 +11,11 @@ const ContainerBlock = styled.div`
   height: 100%;
   margin: 0 auto;
 
-  @media ${device.laptop} {
+  @media ${DEVICE.LARGE} {
     width: 90%;
   }
 
-  @media ${device.mobile} {
+  @media ${DEVICE.SMALL} {
     width: 100%;
     padding: 0 15px;
   }
