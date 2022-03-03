@@ -2,17 +2,18 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import ArrowButton from './ArrowButton';
 import ImageList from './ImageList';
+import { slideData } from '../../data/slideData';
 
 const width = 1060;
 
-function Slider({ slides }) {
+function Slider() {
+  const [slides, setSlides] = useState(slideData);
+  const [translate, setTranslate] = useState(1060 * 2);
+  const [currentSlide, setCurrentSlide] = useState(3);
   const [autoPlay, setAutoPlay] = useState(true);
-  const [current, setCurrent] = useState({
-    activeSlide: 1,
-    translate: width,
-  });
 
-  const { activeSlide, translate } = current;
+  const slideRef = useRef(null);
+  // const { activeSlide, translate } = current;
 
   const autoPlayRef = useRef();
 
@@ -28,7 +29,7 @@ function Slider({ slides }) {
     let interval = null;
 
     if (autoPlay) {
-      interval = setInterval(play, 3000);
+      // interval = setInterval(play, 3000);
     }
 
     return () => {
@@ -36,23 +37,33 @@ function Slider({ slides }) {
         clearInterval(interval);
       }
     };
-  }, [autoPlay, activeSlide]);
+  }, [autoPlay]);
 
-  const prevSlide = () => {
-    setCurrent({
-      ...current,
-      translate: translate - width,
-      activeSlide: activeSlide === 0 ? slides.length - 1 : activeSlide - 1,
-    });
-  };
+  useEffect(() => {
+    setSlides([...slides.slice(-2), ...slides, ...slides.slice(0, 2)]);
+  }, []);
+
+  useEffect(() => {
+    console.log(slideRef.current);
+    if (currentSlide === slides.length - 2) {
+      slideRef.current.ontransitionend = () => {
+        console.log('transition 끝');
+        nextSlide();
+        slideRef.current.ontransitionend = null;
+      };
+      console.log(currentSlide);
+    }
+  }, [currentSlide]);
+
+  const prevSlide = () => {};
 
   const nextSlide = () => {
-    if (activeSlide < slides.length - 1) {
-      setCurrent({
-        ...current,
-        translate: translate + width,
-        activeSlide: activeSlide === slides.length - 1 ? 0 : activeSlide + 1,
-      });
+    if (currentSlide === slides.length - 2) {
+      setCurrentSlide(2);
+      setTranslate(1060);
+    } else if (currentSlide < slides.length - 2) {
+      setCurrentSlide(currentSlide + 1);
+      setTranslate(width * currentSlide);
     }
   };
 
@@ -63,7 +74,15 @@ function Slider({ slides }) {
 
   return (
     <SliderBlock>
-      <ImageList current={current} slides={slides} width={width} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} />
+      <ImageList
+        ref={slideRef}
+        translate={translate}
+        currentSlide={currentSlide}
+        slides={slides}
+        width={width}
+        handleMouseEnter={handleMouseEnter}
+        handleMouseLeave={handleMouseLeave}
+      />
       <ArrowButton direction='left' handleClick={prevSlide} />
       <ArrowButton direction='right' handleClick={nextSlide} />
     </SliderBlock>

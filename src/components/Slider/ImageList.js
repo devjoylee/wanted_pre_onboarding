@@ -1,24 +1,23 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 import ImageItem from './ImageItem';
 
-function ImageList({ current, slides, width, handleMouseEnter, handleMouseLeave }) {
-  const { activeSlide, translate } = current;
-
+const ImageList = forwardRef(({ currentSlide, translate, slides, width, handleMouseEnter, handleMouseLeave }, ref) => {
   return (
     <ImageListBlock
+      ref={ref}
       translate={translate}
       totalWidth={width * slides.length}
       width={width}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {slides.map((slide) => (
-        <ImageItem slide={slide} key={slide.id} width={width} activeSlide={activeSlide} />
+      {slides.map((slide, i) => (
+        <ImageItem slide={slide} key={i} width={width} currentSlide={currentSlide} />
       ))}
     </ImageListBlock>
   );
-}
+});
 
 const ImageListBlock = styled.ul`
   display: flex;
