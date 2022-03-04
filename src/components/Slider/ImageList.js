@@ -2,18 +2,12 @@ import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 import ImageItem from './ImageItem';
 
-const ImageList = forwardRef(({ currentSlide, translate, slides, width, handleMouseEnter, handleMouseLeave }, ref) => {
+const ImageList = forwardRef(({ currentSlide, translate, slides, width }, ref) => {
+  const currentId = currentSlide === 2 ? slides.length - 5 : currentSlide - 3;
   return (
-    <ImageListBlock
-      ref={ref}
-      translate={translate}
-      totalWidth={width * slides.length}
-      width={width}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
+    <ImageListBlock ref={ref} translate={translate} totalWidth={width * slides.length} width={width}>
       {slides.map((slide, i) => (
-        <ImageItem slide={slide} key={i} width={width} currentSlide={currentSlide} />
+        <ImageItem slide={slide} key={i} width={width} currentId={currentId} />
       ))}
     </ImageListBlock>
   );

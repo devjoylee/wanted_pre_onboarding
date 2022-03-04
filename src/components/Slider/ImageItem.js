@@ -3,13 +3,12 @@ import styled from 'styled-components';
 import { NextIcon } from '../../assets';
 import { DEVICE } from '../../data/device';
 
-function ImageItem({ slide, currentSlide }) {
+function ImageItem({ slide, currentId }) {
   const { id, title, description, image } = slide;
-
   return (
     <ImageItemBlock>
-      <SlideImage imageUrl={image} active={id === currentSlide - 3} />
-      <SlideInfo active={id === currentSlide - 3}>
+      <SlideImage imageUrl={image} active={id === currentId} />
+      <SlideInfo active={id === currentId}>
         <TextWrapper>
           <SlideTitle>{title}</SlideTitle>
           <SlideDescription>{description}</SlideDescription>
